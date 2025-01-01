@@ -3,8 +3,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 1000px;
-    height: 1000px;
+    width: min(100vw, 100vh);
+    height: min(100vw, 100vh);
     pointer-events: auto;
 }
 
