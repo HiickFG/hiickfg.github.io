@@ -47,7 +47,7 @@ const MatrixCanvas = ({ sequential = false, customLetters = "ｱｲｳｴｵｶ�
         canvas.height = window.innerHeight;
 
         const columns = Math.floor(canvas.width / fontSize);
-        const drops = Array(columns).fill(0);
+        const drops = Array(columns).fill(0).map(() => Math.floor(Math.random() * canvas.height / fontSize));
 
         const canvasConfig = {
             canvas: canvas,
