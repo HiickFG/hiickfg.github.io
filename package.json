@@ -9,7 +9,7 @@
     "cra-template": "1.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "git+https://github.com/HiickFG/react-scripts.git",
     "three": "^0.172.0",
     "web-vitals": "^4.2.4",
     "zustand": "^5.0.2"
