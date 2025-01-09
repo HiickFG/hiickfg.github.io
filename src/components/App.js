@@ -1,8 +1,8 @@
 import React from 'react';
-import Globe from "./components/3D Components/Globe";
-import MatrixCanvas from "./components/MatrixCanvas/MatrixCanvas";
-import { sphericalToCartesian } from './utils/globeUtils';
-import './styles/App.css';
+import Globe from "./Graphic Components/Globe";
+import MatrixCanvas from "./Graphic Components/MatrixCanvas";
+import TopMenu from './General/TopMenu';
+import { sphericalToCartesian } from '../utils/globeUtils';
 
 function App() {
   const sphereRadius = 1;
@@ -29,11 +29,12 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <div>
-          <MatrixCanvas />
-          <Globe spots={spotsPositions} />
-        </div>
+        <TopMenu />
       </header>
+      <div className='app-content'>
+        <MatrixCanvas />
+        <Globe spots={spotsPositions} />
+      </div>
     </div>
   );
 }

@@ -17,11 +17,13 @@
   "homepage": "https://hiickfg.github.io",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build-css && react-scripts build",
+    "build-css": "lessc src/styles/main.less src/styles/main.css",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "watch-css": "less-watch-compiler styles styles main.less"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +44,8 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.2.0"
+    "gh-pages": "^6.2.0",
+    "less": "^4.2.1",
+    "less-watch-compiler": "^1.16.3"
   }
 }

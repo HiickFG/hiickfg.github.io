@@ -4,9 +4,6 @@ import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import LuminescentSpike from './LuminescentSpike';
 
-// Styles
-import '../../styles/3D Components/Globe.css';
-
 const RotatingSphere = ({ children, onHoverStart, onHoverEnd }) => {
   return (
     <mesh
@@ -34,7 +31,7 @@ const Globe = ({ spots }) => {
 
     return (
         <div className="globe-container">
-            <Canvas>
+            <Canvas camera={{ position: [0, 0, 3] }}>
                 <ambientLight intensity={1} />
                 <Environment preset="night" />
                 <RotatingSphere
@@ -52,10 +49,12 @@ const Globe = ({ spots }) => {
                 </RotatingSphere>
                 <OrbitControls 
                         rotateSpeed={0.5}
-                        enableZoom={false}
+                        enableZoom={true}
                         enablePan={false}
                         enableRotate={true}
                         autoRotate={autoRotate}
+                        minDistance={2}
+                        maxDistance={10}
                     />
             </Canvas>
         </div>

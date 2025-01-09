@@ -1,8 +1,5 @@
 // Scripts
-import React, { useEffect, useRef } from "react";
-
-// Styles
-import "../../styles/MatrixCanvas/MatrixCanvas.css";
+import { useEffect, useRef } from "react";
 
 const MatrixCanvas = ({ sequential = false, customLetters = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ1234567890@#$%&*" }) => { 
     const canvasRef = useRef(null);
