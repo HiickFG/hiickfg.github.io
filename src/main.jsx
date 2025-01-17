@@ -5,7 +5,7 @@ import './styles/main.less';
 // Scripts
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './aapp.jsx'
+import App from './app.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
