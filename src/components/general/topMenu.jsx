@@ -15,7 +15,9 @@ const TopMenu = () => {
 
     return (
         <div className="top-menu">
-            <Button isIconOnly onPress={onOpen} variant="light" radius="none"><HiMenu /></Button>
+            <Button isIconOnly onPress={onOpen} variant="light" radius="none" size="lg" title="Menu">
+                <HiMenu size="1.5em" />
+            </Button>
             <Drawer isOpen={isOpen} onOpenChange={onOpenChange}>
                 <DrawerContent>
                 {(onClose) => (
