@@ -4,16 +4,18 @@ import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
 import LuminescentSpike from './luminescentSpike';
 
-const RotatingSphere = ({ children, onHoverStart, onHoverEnd }) => {
+const RotatingSphere = ({ children, onHoverStart, onHoverEnd, color }) => {
   return (
     <mesh
-        onPointerOver={onHoverStart}
-        onPointerOut={onHoverEnd}
-        rotation={[Math.PI / 9, 0, 0]}
+      onPointerOver={onHoverStart}
+      onPointerOut={onHoverEnd}
+      rotation={[Math.PI / 9, 0, 0]}
     >
       <sphereGeometry args={[1, 64, 64]} />
       <meshPhysicalMaterial 
-        color="red" 
+        color={color}
+        emissive={color}
+        emissiveIntensity={0.3}
         roughness={0.5} 
         metalness={0.3}
         transparent={true}
@@ -23,11 +25,11 @@ const RotatingSphere = ({ children, onHoverStart, onHoverEnd }) => {
   );
 };
 
-const Globe = ({ spots }) => {
+const Globe = ({ spots, hoverColor, color, hoverInFcn, hoverOutFcn }) => {
     const [autoRotate, setAutoRotate] = useState(true);
 
-    const handleHoverStart = () => setAutoRotate(false);
-    const handleHoverEnd = () => setAutoRotate(true);
+    const handleHoverStart = (e, setColor) => { setAutoRotate(false); hoverInFcn(e, setColor); };
+    const handleHoverEnd = (e) => { setAutoRotate(true); hoverOutFcn(e); };
 
     return (
         <div className="globe-container">
@@ -35,15 +37,19 @@ const Globe = ({ spots }) => {
                 <ambientLight intensity={1} />
                 <Environment preset="night" />
                 <RotatingSphere
-                    onHoverStart={handleHoverStart}
+                    onHoverStart={(e) => handleHoverStart(e, hoverColor)}
                     onHoverEnd={handleHoverEnd}
+                    color={color}
                 >
                 {spots.map((spot, index) => (
                     <LuminescentSpike
                     key={index}
                     position={spot.position}
                     color={spot.color}
-                    hoverColor = "red"
+                    emissiveColor={spot.emissiveColor}
+                    hoverColor = "orange"
+                    hoverInFcn={handleHoverStart}
+                    hoverOutFcn={handleHoverEnd}
                     />
                 ))}
                 </RotatingSphere>

@@ -1,17 +1,8 @@
 import { useEffect, useRef} from 'react';
 import { Vector3, Quaternion } from 'three';
 
-const LuminescentSpike = ({ position, color, hoverColor }) => {
+const LuminescentSpike = ({ position, color, emissiveColor, hoverColor, hoverInFcn, hoverOutFcn }) => {
   const ref = useRef();
-
-  const handleHover = (e) => {
-    e.object.material.emissive.set(hoverColor); // Change color on hover
-  };
-
-  const handleHoverOut = (e) => {
-    e.object.material.emissive.set(color); // Reset color
-  };
-
 
   useEffect(() => {
     if (ref.current) {
@@ -41,12 +32,13 @@ const LuminescentSpike = ({ position, color, hoverColor }) => {
     <mesh 
       ref={ref} 
       position={position}
-      onPointerOver={handleHover}
-      onPointerOut={handleHoverOut}>
+      onPointerOver={(e) => hoverInFcn(e, hoverColor)}
+      onPointerOut={hoverOutFcn}>
         <coneGeometry args={[0.05, 0.5, 16]} />
         <meshStandardMaterial
-          emissive={color}
-          emissiveIntensity={1}
+          color={color}
+          emissive={emissiveColor}
+          emissiveIntensity={0.5}
         />
     </mesh>
   );
