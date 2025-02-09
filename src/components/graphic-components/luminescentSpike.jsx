@@ -38,7 +38,11 @@ const LuminescentSpike = ({ position, color, emissiveColor, hoverColor, hoverInF
         <meshStandardMaterial
           color={color}
           emissive={emissiveColor}
-          emissiveIntensity={0.5}
+          emissiveIntensity={1}
+          metalness={1}
+          opacity={0.8}
+          roughness={0}
+          transparent={true}
         />
     </mesh>
   );

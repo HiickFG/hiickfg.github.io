@@ -1,21 +1,32 @@
 import React from 'react';
-import Globe from "./components/graphic-components/globe.jsx";
 import MatrixCanvas from "./components/graphic-components/matrixCanvas.jsx";
+import SolarSystem from './components/graphic-components/solarSystem.jsx';
 import TopMenu from './components/general/topMenu.jsx';
 import { sphericalToCartesian } from './utils/globeUtils.js';
 
 function App() {
   const sphereRadius = 1;
   const sphericalSpots = [
-    { theta: 0, phi: 0, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: Math.PI / 4, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: Math.PI / 2, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: 3 * Math.PI / 4, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: Math.PI, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: 5 * Math.PI / 4, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: 3 * Math.PI / 2, color: 'red', emissiveColor: 'red' },
-    { theta: 0, phi: 7 * Math.PI / 4, color: 'red', emissiveColor: 'red' },
+    { theta: 0, phi: 0, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: Math.PI / 4, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: Math.PI / 2, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: 3 * Math.PI / 4, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: Math.PI, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: 5 * Math.PI / 4, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: 3 * Math.PI / 2, color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { theta: 0, phi: 7 * Math.PI / 4, color: 'darkGrey', emissiveColor: 'darkOrange' },
     
+  ];
+
+  const torusArcs = [
+    { rotation: [Math.PI/4, Math.PI/4, 0], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [Math.PI/4, Math.PI/4, Math.PI], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [Math.PI/4, -Math.PI/4, 0], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [Math.PI/4, -Math.PI/4, Math.PI], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [-Math.PI/4, -Math.PI/4, 0], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [-Math.PI/4, -Math.PI/4, Math.PI], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [-Math.PI/4, Math.PI/4, 0], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' },
+    { rotation: [-Math.PI/4, Math.PI/4, Math.PI], order: "YXZ", color: 'darkGrey', emissiveColor: 'darkOrange' }
   ];
 
   const calculateSpotPositions = (spots, radius) => {
@@ -46,7 +57,12 @@ function App() {
       </header>
       <div className='app-content'>
         <MatrixCanvas />
-        <Globe spots={spotsConfigs} color="darkred" hoverColor="red" hoverInFcn={handleHover} hoverOutFcn={handleHoverOut} />
+        <SolarSystem 
+          spots={spotsConfigs} 
+          hoverInFcn={handleHover} 
+          hoverOutFcn={handleHoverOut} 
+          torusArcs={torusArcs}
+        />
       </div>
     </div>
   );
